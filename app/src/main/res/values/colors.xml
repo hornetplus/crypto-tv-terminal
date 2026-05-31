@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Цвет леттербокса/фона из дизайн-токенов (stage-bg) -->
+    <color name="stage_bg">#04060B</color>
+    <color name="cyan">#2BE3F0</color>
+    <color name="ink">#EAEFF8</color>
+</resources>

@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.cryptotv.terminal'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.cryptotv.terminal"
+        minSdk 21          // покрывает практически все Android TV / Fire TV
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // Авто-подписывается debug-ключом → ставится через adb install / sideload.
+            // Это и есть APK, который собирает GitHub Actions (artifact app-debug.apk).
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Для публикации добавьте signingConfig — см. README → «Подпись релиза».
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    // Локализация табло — русская; ресурсы оставляем как есть.
+    androidResources {
+        noCompress 'js', 'css', 'html', 'woff2'
+    }
+}
+
+dependencies {
+    // Намеренно без AndroidX: используем платформенные android.app.Activity + WebView.
+    // Меньше зависимостей → надёжнее и быстрее сборка в CI.
+    // Kotlin stdlib подтягивается Kotlin-плагином автоматически.
+}

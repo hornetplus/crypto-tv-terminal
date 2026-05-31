@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Полноэкранная тёмная тема без ActionBar/Title.
+         Фон = stage_bg, чтобы до первого кадра WebView не мигало белым. -->
+    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/stage_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@color/stage_bg</item>
+        <item name="android:navigationBarColor">@color/stage_bg</item>
+        <item name="android:colorBackground">@color/stage_bg</item>
+    </style>
+</resources>

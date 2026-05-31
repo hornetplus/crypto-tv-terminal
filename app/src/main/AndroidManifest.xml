@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- У телевизоров нет тач-экрана — обязательно для Android TV -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <!-- Leanback-лаунчер TV. required=false → APK можно поставить и на телефон для теста -->
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <!-- Нужно только если позже подключите реальные HTTPS-API/вебсокеты.
+         Для текущей офлайн-сборки (mock-данные в assets) не используется. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:banner="@drawable/banner"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:hardwareAccelerated="true"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density|locale|fontScale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- Иконка на главном экране Android TV -->
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+                <!-- И на обычном лаунчере (удобно для теста на телефоне/планшете) -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

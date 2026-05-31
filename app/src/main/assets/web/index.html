@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto TV Terminal</title>
+<link rel="stylesheet" href="terminal.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage" data-screen-label="Crypto TV Terminal">
+
+    <!-- ============ HEADER ============ -->
+    <header id="header">
+      <div class="hdr-cell brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/><path d="M19 7h-3"/><path d="M19 7v3"/></svg>
+        </div>
+        <div class="brand-name">
+          <div class="l1">CRYPTO <b>TERMINAL</b></div>
+          <div class="l2">Биржевое табло</div>
+        </div>
+      </div>
+
+      <div class="hdr-divider"></div>
+
+      <div class="hdr-cell clock">
+        <div class="clock-time num"><span id="clock-hms">10:24:00</span></div>
+        <div class="clock-date" id="clock-date"><b>24 мая 2025</b> · суббота</div>
+      </div>
+
+      <div class="hdr-stats">
+        <div class="stat">
+          <div class="stat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1FD98A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Статус рынка</div>
+            <div class="market-status">
+              <span class="pulse-dot" style="background:var(--up);color:var(--up)"></span>
+              <span class="stat-value" style="font-size:20px;color:var(--up)">Открыт</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="gauge" id="fg-gauge">
+            <svg width="46" height="46" viewBox="0 0 46 46">
+              <circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+              <circle id="fg-arc" cx="23" cy="23" r="19" fill="none" stroke="#1FD98A" stroke-width="5" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="38"/>
+            </svg>
+            <div class="gauge-num" id="fg-num">68</div>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Индекс страха и жадности</div>
+            <div class="stat-value"><span id="fg-val">68</span> <small style="color:var(--up)" id="fg-word">Жадность</small></div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-ic">
+            <svg viewBox="0 0 24 24" fill="#F7931A"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.2 8.6c-.2 1.1-.9 1.5-1.9 1.6l.4 1.5-1 .3-.4-1.5-.8.2.4 1.5-1 .3-.4-1.5-1.6.4-.3-1.2.7-.2c.3-.1.4-.2.4-.5l-.9-3.5c-.1-.2-.2-.4-.5-.4l-.7.2-.3-1.1 1.6-.4-.4-1.5 1-.3.4 1.5.8-.2-.4-1.5 1-.3.4 1.5c1 0 1.9.1 2.2 1.1.2.8-.1 1.2-.6 1.5.6.2.9.6.8 1.4Zm-1.9-1.4c-.1-.6-1.1-.4-1.4-.3l.3 1.3c.4-.1 1.3-.2 1.1-1Zm.2 2.4c-.2-.7-1.3-.4-1.7-.3l.4 1.4c.4-.1 1.5-.2 1.3-1.1Z"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Доминация BTC</div>
+            <div class="stat-value num" id="dom-val">61.3<small>%</small></div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="gauge" id="alt-gauge">
+            <svg width="46" height="46" viewBox="0 0 46 46">
+              <circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/>
+              <circle id="alt-arc" cx="23" cy="23" r="19" fill="none" stroke="#8C7BF0" stroke-width="5" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="70"/>
+            </svg>
+            <div class="gauge-num" id="alt-num">41</div>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Альтсезон</div>
+            <div class="stat-value" style="font-size:20px;color:var(--violet)">Сезон BTC</div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2BE3F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1.1 1.3-2 3-2s3 .9 3 2-1.3 1.5-3 1.5-3 .4-3 1.5 1.3 2 3 2 3-.9 3-2"/></svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-label">Капитализация рынка</div>
+            <div class="stat-value num">$<span id="cap-val">2.45</span>T <small class="up" id="cap-chg">+2.35%</small></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ MAIN ============ -->
+    <div id="main">
+
+      <!-- LEFT — watchlist -->
+      <div class="col">
+        <section class="panel" id="watchlist">
+          <div class="panel-head">
+            <div class="panel-title">Обзор рынка</div>
+            <div class="wl-tabs">
+              <span class="wl-tab active">USD</span>
+              <span class="wl-tab">24Ч %</span>
+              <span class="wl-tab">Объём</span>
+            </div>
+          </div>
+          <div class="wl-rows" id="wl-rows"></div>
+          <div class="wl-foot">
+            <button class="btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Все активы
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- CENTER — hero + indicators -->
+      <div class="center-col">
+        <div class="hero-row" id="hero-row"></div>
+
+        <div class="ind-row">
+          <!-- Liquidations -->
+          <section class="panel ind">
+            <div class="ind-head">
+              <div class="ind-title">Ликвидации <b>· 24Ч</b></div>
+            </div>
+            <div class="liq-body">
+              <div>
+                <div class="liq-total num">$285.47M</div>
+                <div class="liq-legend">
+                  <div class="liq-leg"><span class="k">Лонг</span> <span class="up num">$195.21M</span></div>
+                  <div class="liq-leg"><span class="k">Шорт</span> <span class="down num">$90.26M</span></div>
+                </div>
+              </div>
+              <div class="liq-ring">
+                <svg width="92" height="92" viewBox="0 0 92 92">
+                  <circle cx="46" cy="46" r="38" fill="none" stroke="var(--down)" stroke-width="9"/>
+                  <circle cx="46" cy="46" r="38" fill="none" stroke="var(--up)" stroke-width="9" stroke-linecap="round" stroke-dasharray="238.8" stroke-dashoffset="76.4"/>
+                </svg>
+                <div class="lbl num">68%</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Funding -->
+          <section class="panel ind">
+            <div class="ind-head"><div class="ind-title">Фандинг</div></div>
+            <div class="fund-list" id="fund-list"></div>
+          </section>
+
+          <!-- Gas -->
+          <section class="panel ind">
+            <div class="ind-head"><div class="ind-title">Газ <b>· Ethereum</b></div></div>
+            <div class="gas-main">
+              <span class="gas-val num" id="gas-val">18</span>
+              <span class="gas-unit">Gwei</span>
+              <span class="gas-usd num">$0.62</span>
+            </div>
+            <div class="gas-tiers">
+              <div class="gas-tier"><div class="gt">Низкий</div><div class="gv num">12</div></div>
+              <div class="gas-tier mid"><div class="gt">Средний</div><div class="gv num" id="gas-avg">18</div></div>
+              <div class="gas-tier"><div class="gt">Высокий</div><div class="gv num">26</div></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- RIGHT — news -->
+      <div class="col">
+        <section class="panel" id="news">
+          <div class="panel-head">
+            <div class="panel-title">
+              <span class="dot-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></span>
+              Новости
+            </div>
+            <span class="news-link">Все</span>
+          </div>
+          <div class="news-list" id="news-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ============ WHALE TICKER ============ -->
+    <section class="panel" id="whale">
+      <div class="whale-head">
+        <div class="panel-title">
+          <span class="dot-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2 0 3-1.5 5-1.5S14 12 14 12s-1 4-6 4a5 5 0 0 1-5-4Z"/><path d="M14 12c1-3 4-5 8-5-1 2-1 3 0 5-2 .5-3 1.5-3 3"/><path d="M6 11.5V9"/></svg></span>
+          Крупные сделки
+        </div>
+        <span class="news-link">в реальном времени</span>
+      </div>
+      <div class="whale-strip" id="whale-strip"></div>
+      <div class="whale-foot">
+        Все транзакции
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="terminal.js"></script>
+</body>
+</html>

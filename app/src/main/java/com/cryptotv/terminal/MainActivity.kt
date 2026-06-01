@@ -43,15 +43,24 @@ class MainActivity : Activity() {
             with(settings) {
                 javaScriptEnabled = true            // нужно для логики/анимаций табло
                 domStorageEnabled = true
-                loadWithOverviewMode = true
-                useWideViewPort = true
+                databaseEnabled = true
+                // ВАЖНО: масштабированием занимается сам макет (JS fitStage).
+                // Поэтому WebView НЕ должен дополнительно зумить страницу —
+                // иначе верстка не вписывается в экран (двойное масштабирование).
+                useWideViewPort = false
+                loadWithOverviewMode = false
                 builtInZoomControls = false
                 displayZoomControls = false
                 setSupportZoom(false)
                 cacheMode = android.webkit.WebSettings.LOAD_DEFAULT
-                // Понадобится, только если позже подключите реальные HTTPS-API:
                 mediaPlaybackRequiresUserGesture = false
-                // allowFileAccess по умолчанию true для file:// контента из assets.
+                // Разрешаем странице из assets (file://) ходить в сеть к API/вебсокетам.
+                // Это безопасно: WebView грузит только нашу собственную страницу.
+                allowFileAccess = true
+                allowContentAccess = true
+                @Suppress("DEPRECATION") allowFileAccessFromFileURLs = true
+                @Suppress("DEPRECATION") allowUniversalAccessFromFileURLs = true
+                mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             }
             // Без внешних переходов: всё рендерится внутри одного WebView.
             webViewClient = WebViewClient()

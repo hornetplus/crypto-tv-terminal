@@ -113,12 +113,12 @@ html, body {
 #viewport {
   position: fixed; inset: 0;
   background: var(--stage-bg);
-  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
 #stage {
   width: 1920px; height: 1080px;
-  transform-origin: center center;
-  position: relative;
+  position: absolute; left: 0; top: 0;
+  transform-origin: 0 0;            /* JS sets: translate(x,y) scale(s) — точное вписывание */
   background:
     radial-gradient(120% 80% at 20% -10%, #0B1322 0%, transparent 55%),
     radial-gradient(120% 90% at 95% 110%, #0A1320 0%, transparent 50%),
